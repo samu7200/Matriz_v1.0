@@ -1,0 +1,404 @@
+﻿:root {
+    --fundo: #eef4ff;
+    --papel: #ffffff;
+    --azul: #1d4ed8;
+    --azul-escuro: #17306b;
+    --azul-claro: #dbeafe;
+    --amarelo: #facc15;
+    --texto: #1f2937;
+    --texto-fraco: #64748b;
+    --sombra: 6px 6px 0 rgba(29, 78, 216, 0.14);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--texto);
+    background-color: var(--fundo);
+    background-image: linear-gradient(rgba(29, 78, 216, 0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(29, 78, 216, 0.07) 1px, transparent 1px);
+    background-size: 28px 28px;
+    text-align: center;
+    padding: 18px 14px 42px;
+}
+
+body::after {
+    content: "Antonio Augusto • Lincoln • Samuel • José • Mateus Russi";
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 12px;
+    color: rgba(23, 48, 107, 0.42);
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    pointer-events: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    min-width: 122px;
+    padding: 11px 18px;
+    border: 2px solid var(--azul-escuro);
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    color: var(--azul-escuro);
+    background: var(--amarelo);
+    box-shadow: 3px 3px 0 rgba(23, 48, 107, 0.25);
+}
+
+button:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0 rgba(23, 48, 107, 0.25);
+}
+
+button:active {
+    transform: translate(2px, 2px);
+    box-shadow: none;
+}
+
+body:not(:has(#operacao)) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+body:not(:has(#operacao)) h1 {
+    width: min(720px, 100%);
+    color: var(--azul-escuro);
+    background: var(--papel);
+    border: 2px solid var(--azul-escuro);
+    border-bottom: 5px solid var(--amarelo);
+    border-radius: 8px 8px 0 0;
+    padding: 18px 22px 14px;
+    font-size: 2rem;
+    box-shadow: var(--sombra);
+}
+
+body:not(:has(#operacao)) h2 {
+    color: var(--azul);
+    font-size: 1.35rem;
+    margin-top: 8px;
+}
+
+body:not(:has(#operacao)) p {
+    color: var(--texto-fraco);
+    font-weight: 700;
+}
+
+body:not(:has(#operacao)) img {
+    width: 150px;
+    height: auto;
+    display: block;
+    margin: 0 auto 4px;
+}
+
+body:has(#operacao) {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: auto auto auto auto;
+    justify-content: center;
+    align-items: center;
+    column-gap: 28px;
+    row-gap: 10px;
+}
+
+body:has(#operacao) h1 {
+    width: fit-content;
+    min-width: 160px;
+    color: var(--azul-escuro);
+    background: var(--papel);
+    border: 2px solid var(--azul-escuro);
+    border-bottom: 5px solid var(--amarelo);
+    border-radius: 8px 8px 0 0;
+    padding: 14px 20px 12px;
+    font-size: 1.9rem;
+    box-shadow: var(--sombra);
+    justify-self: center;
+}
+
+body:has(#operacao) h1:nth-of-type(1) {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+body:has(#operacao) table:nth-of-type(1) {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+body:has(#operacao) h1:nth-of-type(2) {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+body:has(#operacao) table:nth-of-type(2) {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+#operacao {
+    grid-column: 3;
+    grid-row: 2;
+    background: var(--azul-claro);
+    color: var(--azul-escuro);
+    border: 2px solid var(--azul);
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-weight: 700;
+    white-space: nowrap;
+    justify-self: center;
+}
+
+body:has(#operacao) h1:nth-of-type(3) {
+    grid-column: 4;
+    grid-row: 1;
+}
+
+body:has(#operacao) table:nth-of-type(3) {
+    grid-column: 4;
+    grid-row: 2;
+}
+
+table {
+    margin: 0 auto;
+    border-collapse: separate;
+    border-spacing: 8px;
+    position: relative;
+    background: #f8fbff;
+    border-radius: 8px;
+    padding: 10px 16px;
+    box-shadow: 4px 4px 0 rgba(15, 23, 42, 0.07);
+}
+
+table::before,
+table::after {
+    content: "";
+    position: absolute;
+    top: 8px;
+    bottom: 8px;
+    width: 12px;
+    border: 3px solid var(--azul);
+}
+
+table::before {
+    left: 5px;
+    border-right: none;
+    border-radius: 8px 0 0 8px;
+}
+
+table::after {
+    right: 5px;
+    border-left: none;
+    border-radius: 0 8px 8px 0;
+}
+
+td {
+    width: 52px;
+    height: 48px;
+    text-align: center;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--azul-escuro);
+    background: #ffffff;
+    border: 2px solid #bfdbfe;
+    border-radius: 6px;
+}
+
+input[type="number"] {
+    width: 46px;
+    height: 42px;
+    border: 3px solid var(--amarelo);
+    border-radius: 6px;
+    text-align: center;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--azul-escuro);
+    background: #fffbea;
+    outline: none;
+}
+
+input[type="number"]:focus {
+    border-color: var(--azul);
+    background: #ffffff;
+}
+
+#resultado {
+    grid-column: 1 / 5;
+    grid-row: 3;
+    min-height: 26px;
+    color: var(--azul-escuro);
+    font-size: 1.15rem;
+    font-weight: 700;
+    justify-self: center;
+}
+
+body:has(#operacao) > a[href="index1.html"] {
+    grid-column: 2;
+    grid-row: 4;
+    justify-self: end;
+}
+
+#verificar {
+    grid-column: 3;
+    grid-row: 4;
+    justify-self: center;
+}
+
+#recomecar {
+    grid-column: 4;
+    grid-row: 4;
+    justify-self: start;
+    background: #e0ecff;
+}
+
+a[href="index1.html"] button {
+    background: #e0ecff;
+}
+
+br {
+    display: none;
+}
+
+@media (max-width: 920px) {
+    body:has(#operacao) {
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+        row-gap: 8px;
+    }
+
+    body:has(#operacao) h1:nth-of-type(1),
+    body:has(#operacao) table:nth-of-type(1),
+    body:has(#operacao) h1:nth-of-type(2),
+    body:has(#operacao) table:nth-of-type(2),
+    #operacao,
+    body:has(#operacao) h1:nth-of-type(3),
+    body:has(#operacao) table:nth-of-type(3),
+    #resultado,
+    body:has(#operacao) > a[href="index1.html"],
+    #verificar,
+    #recomecar {
+        grid-column: 1;
+        grid-row: auto;
+        justify-self: center;
+    }
+}
+
+body:not(:has(#operacao)) img {
+    border: 2px solid var(--azul-escuro);
+    border-radius: 10px;
+    box-shadow: 5px 5px 0 rgba(23, 48, 107, 0.18);
+    background: #ffffff;
+    padding: 8px;
+}
+
+body:has(#operacao) > a[href="index1.html"] {
+    grid-column: 1 / 5;
+    grid-row: 4;
+    justify-self: center;
+    margin-right: 132px;
+}
+
+#verificar {
+    grid-column: 1 / 5;
+    grid-row: 4;
+    justify-self: center;
+}
+
+#recomecar {
+    grid-column: 1 / 5;
+    grid-row: 4;
+    justify-self: center;
+    margin-left: 132px;
+}
+
+body:has(#operacao) {
+    column-gap: 36px;
+    row-gap: 4px;
+}
+
+body:has(#operacao) h1 {
+    margin-bottom: 2px;
+}
+
+body:has(#operacao) table {
+    margin-top: 0;
+}
+
+body:has(#operacao) {
+    column-gap: 54px;
+}
+
+body:has(#operacao) > a[href="index1.html"],
+#verificar,
+#recomecar {
+    grid-row: 4;
+    justify-self: center;
+    margin: 8px 14px 0;
+}
+
+body:has(#operacao) > a[href="index1.html"] {
+    grid-column: 1 / 3;
+    margin-left: 150px;
+    margin-right: 0;
+}
+
+#verificar {
+    grid-column: 2 / 4;
+}
+
+#recomecar {
+    grid-column: 3 / 5;
+    margin-left: 0;
+}
+
+#recomecar {
+    transform: translateX(-28px);
+}
+
+#recomecar:hover {
+    transform: translateX(-29px) translateY(-1px);
+}
+
+#recomecar:active {
+    transform: translateX(-26px) translateY(2px);
+}
+
+#resultado {
+    min-width: 180px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: #ffffff;
+    border: 2px solid var(--azul-escuro);
+    box-shadow: 3px 3px 0 rgba(23, 48, 107, 0.18);
+}
+
+#resultado:empty {
+    visibility: hidden;
+}
+
+#resultado.certo {
+    color: #14532d;
+    background: #bbf7d0;
+    border-color: #166534;
+}
+
+#resultado.errado {
+    color: #7f1d1d;
+    background: #fecaca;
+    border-color: #b91c1c;
+}

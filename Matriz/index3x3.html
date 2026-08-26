@@ -1,0 +1,353 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matriz 3x3</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Matriz A</h1>
+    <table>
+        <tr>
+            <td id="a11"></td>
+            <td id="a12"></td>
+            <td id="a13"></td>
+
+        </tr>
+
+        <tr>
+            <td id="a21"></td>
+            <td id="a22"></td>
+            <td id="a23"></td>
+        </tr>
+
+        <tr>
+            <td id="a31"></td>
+            <td id="a32"></td>
+            <td id="a33"></td>
+        </tr>
+
+    </table>
+
+    <h1>Matriz B</h1>
+    <table>
+        <tr>
+            <td id="b11"></td>
+            <td id="b12"></td>
+            <td id="b13"></td>
+        </tr>
+
+        <tr>
+            <td id="b21"></td>
+            <td id="b22"></td>
+            <td id="b23"></td>
+        </tr>
+
+        <tr>
+            <td id="b31"></td>
+            <td id="b32"></td>
+            <td id="b33"></td>
+        </tr>
+
+    </table>
+
+    <p id="operacao"></p>
+
+    <h1>Matriz C</h1>
+    <table>
+        <tr>
+            <td id="c11"></td>
+            <td id="c12"></td>
+            <td id="c13"></td>
+        </tr>
+
+        <tr>
+            <td id="c21"></td>
+            <td id="c22"></td>
+            <td id="c23"></td>
+        </tr>
+
+        <tr>
+            <td id="c31"></td>
+            <td id="c32"></td>
+            <td id="c33"></td>
+        </tr>
+
+    </table>
+<br><br>
+    <p id="resultado"></p>
+
+    <a href="index1.html">
+        <button>Início</button>
+    </a>
+    <button id="verificar" onclick="verificar()">Verificar</button>
+    <button id="recomecar" onclick="recomecar()">Recomeçar</button>
+
+
+    
+</body>
+
+<script>
+
+    let A11 = Math.floor(Math.random()*101);
+    let A12 = Math.floor(Math.random()*101);
+    let A13 = Math.floor(Math.random()*101);
+    let A21 = Math.floor(Math.random()*101);
+    let A22 = Math.floor(Math.random()*101);
+    let A23 = Math.floor(Math.random()*101);
+    let A31 = Math.floor(Math.random()*101);
+    let A32 = Math.floor(Math.random()*101);
+    let A33 = Math.floor(Math.random()*101);
+
+    document.getElementById("a11").textContent=A11;
+    document.getElementById("a12").textContent=A12;
+    document.getElementById("a13").textContent=A13;
+    document.getElementById("a21").textContent=A21;
+    document.getElementById("a22").textContent=A22;
+    document.getElementById("a23").textContent=A23;
+    document.getElementById("a31").textContent=A31;
+    document.getElementById("a32").textContent=A32;
+    document.getElementById("a33").textContent=A33;
+
+
+    let B11 = Math.floor(Math.random()*101);
+    let B12 = Math.floor(Math.random()*101);
+    let B13 = Math.floor(Math.random()*101);
+    let B21 = Math.floor(Math.random()*101);
+    let B22 = Math.floor(Math.random()*101);
+    let B23 = Math.floor(Math.random()*101);
+    let B31 = Math.floor(Math.random()*101);
+    let B32 = Math.floor(Math.random()*101);
+    let B33 = Math.floor(Math.random()*101);
+
+    document.getElementById("b11").textContent=B11;
+    document.getElementById("b12").textContent=B12;
+    document.getElementById("b13").textContent=B13;
+    document.getElementById("b21").textContent=B21;
+    document.getElementById("b22").textContent=B22;
+    document.getElementById("b23").textContent=B23;
+    document.getElementById("b31").textContent=B31;
+    document.getElementById("b32").textContent=B32;
+    document.getElementById("b33").textContent=B33;
+
+
+
+
+    //CALCULO DE CADA CÉLULA
+    let C11_soma = A11 + B11;
+    let C12_soma = A12 + B12;
+    let C13_soma = A13 + B13;
+    let C21_soma = A21 + B21;
+    let C22_soma = A22 + B22;
+    let C23_soma = A23 + B23;
+    let C31_soma = A31 + B31;
+    let C32_soma = A32 + B32;
+    let C33_soma = A33 + B33;
+
+    let C11_sub = A11 - B11;
+    let C12_sub = A12 - B12;
+    let C13_sub = A13 - B13;
+    let C21_sub = A21 - B21;
+    let C22_sub = A22 - B22;
+    let C23_sub = A23 - B23;
+    let C31_sub = A31 - B31;
+    let C32_sub = A32 - B32;
+    let C33_sub = A33 - B33;
+
+    let C11_mult = A11 * B11 + A12 * B21 + A13 * B31;
+    let C12_mult = A11 * B12 + A12 * B22 + A13 * B32;
+    let C13_mult = A11 * B13 + A12 * B23 + A13 * B33;
+    let C21_mult = A21 * B11 + A22 * B21 + A23 * B31;
+    let C22_mult = A21 * B12 + A22 * B22 + A23 * B32;
+    let C23_mult = A21 * B13 + A22 * B23 + A23 * B33;
+    let C31_mult = A31 * B11 + A32 * B21 + A33 * B31;
+    let C32_mult = A31 * B12 + A32 * B22 + A33 * B32;
+    let C33_mult = A31 * B13 + A32 * B23 + A33 * B33;
+    
+
+
+    // SORTEAR OPERAÇÃO
+    let S_operacao = Math.floor(Math.random()*3)+1;
+
+    if(S_operacao == 1){
+        document.getElementById("c11").textContent=C11_soma;
+        document.getElementById("c12").textContent=C12_soma;
+        document.getElementById("c13").textContent=C13_soma;
+        document.getElementById("c21").textContent=C21_soma;
+        document.getElementById("c22").textContent=C22_soma;
+        document.getElementById("c23").textContent=C23_soma;
+        document.getElementById("c31").textContent=C31_soma;
+        document.getElementById("c32").textContent=C32_soma;
+        document.getElementById("c33").textContent=C33_soma;
+        document.getElementById("operacao").textContent = "Operação: Soma (+)"; //EXIBE A OPERAÇÃO
+    }
+    else
+    if(S_operacao == 2){
+        document.getElementById("c11").textContent=C11_sub;
+        document.getElementById("c12").textContent=C12_sub;
+        document.getElementById("c13").textContent=C13_sub;
+        document.getElementById("c21").textContent=C21_sub;
+        document.getElementById("c22").textContent=C22_sub;
+        document.getElementById("c23").textContent=C23_sub;
+        document.getElementById("c31").textContent=C31_sub;
+        document.getElementById("c32").textContent=C32_sub;
+        document.getElementById("c33").textContent=C33_sub;
+        document.getElementById("operacao").textContent = "Operação: Subtração (-)"; //EXIBE A OPERAÇÃO
+    }
+    else
+    if(S_operacao == 3){
+        document.getElementById("c11").textContent=C11_mult;
+        document.getElementById("c12").textContent=C12_mult;
+        document.getElementById("c13").textContent=C13_mult;
+        document.getElementById("c21").textContent=C21_mult;
+        document.getElementById("c22").textContent=C22_mult;
+        document.getElementById("c23").textContent=C23_mult;
+        document.getElementById("c31").textContent=C31_mult;
+        document.getElementById("c32").textContent=C32_mult;
+        document.getElementById("c33").textContent=C33_mult;
+        document.getElementById("operacao").textContent = "Operação: Multiplicação (x)"; //EXIBE A OPERAÇÃO
+    }
+
+
+     // SORTEIO DE 2 INPUTS DIFERENTES
+
+let C_sorteado1 = Math.floor(Math.random()*9)+1;
+let C_sorteado2;
+
+do{
+    C_sorteado2 = Math.floor(Math.random()*9)+1;
+}while(C_sorteado2 == C_sorteado1);
+
+let C_correto1;
+let C_correto2;
+
+// Função para inserir input e guardar resposta correta
+function criarInput(posicao, idInput){
+let C_correto;
+
+    if(posicao == 1){
+        document.getElementById("c11").innerHTML =
+        `<input id="${idInput}" type="number">`;
+
+        C_correto = (S_operacao == 1) ? C11_soma :
+                    (S_operacao == 2) ? C11_sub :
+                    C11_mult;
+    }
+
+    else if(posicao == 2){
+        document.getElementById("c12").innerHTML =
+        `<input id="${idInput}" type="number">`;
+
+        C_correto = (S_operacao == 1) ? C12_soma :
+                    (S_operacao == 2) ? C12_sub :
+                    C12_mult;
+    }
+
+    else if(posicao == 3){
+        document.getElementById("c13").innerHTML =
+        `<input id="${idInput}" type="number">`;
+
+        C_correto = (S_operacao == 1) ? C13_soma :
+                    (S_operacao == 2) ? C13_sub :
+                    C13_mult;
+    }
+
+    else if(posicao == 4){
+        document.getElementById("c21").innerHTML =
+        `<input id="${idInput}" type="number">`;
+
+        C_correto = (S_operacao == 1) ? C21_soma :
+                    (S_operacao == 2) ? C21_sub :
+                    C21_mult;
+    }
+
+    else if(posicao == 5){
+        document.getElementById("c22").innerHTML =
+        `<input id="${idInput}" type="number">`;
+
+        C_correto = (S_operacao == 1) ? C22_soma :
+                    (S_operacao == 2) ? C22_sub :
+                    C22_mult;
+    }
+
+    else if(posicao == 6){
+        document.getElementById("c23").innerHTML =
+        `<input id="${idInput}" type="number">`;
+
+        C_correto = (S_operacao == 1) ? C23_soma :
+                    (S_operacao == 2) ? C23_sub :
+                    C23_mult;
+    }
+
+    else if(posicao == 7){
+        document.getElementById("c31").innerHTML =
+        `<input id="${idInput}" type="number">`;
+
+        C_correto = (S_operacao == 1) ? C31_soma :
+                    (S_operacao == 2) ? C31_sub :
+                    C31_mult;
+    }
+
+    else if(posicao == 8){
+        document.getElementById("c32").innerHTML =
+        `<input id="${idInput}" type="number">`;
+
+        C_correto = (S_operacao == 1) ? C32_soma :
+                    (S_operacao == 2) ? C32_sub :
+                    C32_mult;
+    }
+
+    else if(posicao == 9){
+        document.getElementById("c33").innerHTML =
+        `<input id="${idInput}" type="number">`;
+
+        C_correto = (S_operacao == 1) ? C33_soma :
+                    (S_operacao == 2) ? C33_sub :
+                    C33_mult;
+    }
+
+    return C_correto;
+}
+
+C_correto1 = criarInput(C_sorteado1, "resposta1");
+C_correto2 = criarInput(C_sorteado2, "resposta2");
+
+
+
+      function verificar(){
+
+    let resposta1 =
+    Number(document.getElementById("resposta1").value);
+
+    let resposta2 =
+    Number(document.getElementById("resposta2").value);
+
+    if(resposta1 == C_correto1 &&
+       resposta2 == C_correto2){
+
+        document.getElementById("resultado").textContent = "Acertou!";
+            document.getElementById("resultado").className = "certo";
+    }
+    else{
+        document.getElementById("resultado").textContent = "Errou!";
+        document.getElementById("resultado").className = "errado";
+    }
+}
+    
+
+    
+
+    function recomecar(){
+        location.reload();
+    }
+    
+    
+    
+
+    
+</script>
+</html>
+
+
+
